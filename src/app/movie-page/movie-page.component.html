@@ -1,0 +1,47 @@
+<section class="trailer" style="background-image: url(./../../assets/batman-trailer.jpg)">
+  <div class="container">
+    <div class="row row-30 align-items-center">
+      <div class="col-md-4">
+        <a class="link-back" routerLink="">
+          <svg width="68" height="24" viewBox="0 0 68 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M0.939339 10.9393C0.353554 11.5251 0.353554 12.4749 0.939339 13.0607L10.4853 22.6066C11.0711 23.1924 12.0208 23.1924 12.6066 22.6066C13.1924 22.0208 13.1924 21.0711 12.6066 20.4853L4.12132 12L12.6066 3.51472C13.1924 2.92894 13.1924 1.97919 12.6066 1.3934C12.0208 0.807616 11.0711 0.807616 10.4853 1.3934L0.939339 10.9393ZM68 10.5L2 10.5L2 13.5L68 13.5L68 10.5Z" fill="currentColor"/>
+          </svg>
+          <span>Back</span>
+        </a>
+      </div>
+      <div class="col-md-4 text-center">
+        <button class="trailer-play" (click)="togglePlay()">
+          <svg width="100" height="100" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="50" cy="50" r="49.5" stroke="currentColor"/>
+            <path d="M65 50L42.5 62.9904L42.5 37.0096L65 50Z" fill="currentColor"/>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section offset-negative">
+  <div class="container">
+    <div class="row row-30" *ngIf="movie | async as movie">
+      <div class="col-md-4">
+        <img class="movie-poster" src="{{ movie.Poster }}">
+        <h3 class="movie-rating">IMDB Rating: <br>{{ movie.Ratings[0].Value }}</h3>
+      </div>
+      <div class="col-md-8">
+        <h2 class="movie-title">{{ movie.Title }}</h2>
+        <div class="movie-info">
+          <h5 class="movie-info-item">Runtime: <b>{{ movie.Runtime }}</b></h5>
+          <h5 class="movie-info-item">Genre: <b>{{ movie.Genre }}</b></h5>
+          <h5 class="movie-info-item">Year: <b>{{ movie.Year }}</b></h5>
+          <h5 class="movie-info-item">Type: <b>{{ movie.Type }}</b></h5>
+          <p class="movie-plot">{{ movie.Plot }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="trailer-video" (click)="togglePlay()">
+  <iframe width="560" height="315" src="https://www.youtube.com/embed/0WWzgGyAH6Y?controls=0&showinfo=0&modestbranding=1" frameborder="0" allowfullscreen></iframe>
+</div>

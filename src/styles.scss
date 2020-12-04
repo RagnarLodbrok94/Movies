@@ -1,0 +1,262 @@
+/* You can add global styles to this file, and also import other style files */
+body {
+  margin: 0;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 1.5;
+  color: #fff;
+  background-color: #202020;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+p {
+  margin: 0;
+}
+
+img {
+  display: inline-block;
+  max-width: 100%;
+  height: auto;
+}
+
+h1, h2, h3, h5 {
+  margin-top: 0;
+  margin-bottom: 0;
+  line-height: 1.23;
+}
+
+h1, h2, h3 {
+  font-weight: 700;
+}
+
+h1 {
+  font-size: 36px;
+
+  @media( min-width: 768px ) {
+    font-size: 50px;
+  }
+
+  @media( min-width: 1200px ) {
+    font-size: 64px;
+  }
+}
+
+h2 {
+  font-size: 28px;
+
+  @media( min-width: 768px ) {
+    font-size: 38px;
+  }
+
+  @media( min-width: 1200px ) {
+    font-size: 48px;
+  }
+}
+
+h3 {
+  font-size: 24px;
+
+  @media( min-width: 768px ) {
+    font-size: 30px;
+  }
+
+  @media( min-width: 1200px ) {
+    font-size: 36px;
+  }
+}
+
+h5 {
+  font-weight: 500;
+  font-size: 18px;
+
+  @media( min-width: 768px ) {
+    font-size: 21px;
+  }
+
+  @media( min-width: 1200px ) {
+    font-size: 24px;
+  }
+}
+
+
+.section {
+  padding-bottom: 70px;
+
+  @media( min-width: 768px ) {
+    padding-bottom: 100px;
+  }
+
+  @media( min-width: 1200px ) {
+    padding-bottom: 150px;
+  }
+}
+
+
+// Grid
+.container {
+  max-width: 1190px;
+  margin-right: auto;
+  margin-left: auto;
+  padding-right: 15px;
+  padding-left: 15px;
+}
+
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  margin-right: -15px;
+  margin-left: -15px;
+}
+
+.row-30 {
+  margin-bottom: -30px;
+
+  [class*='col'] {
+    margin-bottom: 30px;
+  }
+}
+
+[class*='col'] {
+  position: relative;
+  width: 100%;
+  min-height: 1px;
+  padding-right: 15px;
+  padding-left: 15px;
+}
+
+// Media
+@media( min-width: 1200px ) {
+  .col-md-4 {
+    flex: 0 0 33.333333%;
+    max-width: 33.333333%;
+  }
+
+  .col-md-8 {
+    flex: 0 0 66.666667%;
+    max-width: 66.666667%;
+  }
+}
+
+
+// Button
+button {
+  display: inline-block;
+  cursor: pointer;
+
+  &:focus {
+    outline: none;
+  }
+}
+
+
+// Utilities
+.text-center {
+  text-align: center;
+}
+
+.text-dark {
+  color: #202020;
+}
+
+
+// Relatives
+.position-relative {
+  position: relative;
+}
+
+.index-1 {
+  z-index: 1;
+}
+
+
+// Flex
+.align-items-center {
+  align-items: center;
+}
+
+
+// Owl
+.owl-theme {
+  .owl-nav {
+    position: absolute;
+    left: 50%;
+    bottom: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    max-width: 1190px;
+    padding-right: 15px;
+    padding-left: 15px;
+    transform: translateX( -50% );
+
+    .owl-prev,
+    .owl-next {
+      display: inline-flex;
+      align-items: center;
+      margin: 0;
+      font-size: 18px;
+      line-height: 1;
+      text-transform: capitalize;
+      background: transparent;
+
+      &:hover {
+        background: transparent;
+      }
+    }
+
+    .owl-prev::before,
+    .owl-next::after {
+      display: inline-block;
+      content: '';
+      width: 2.75em;
+      height: 0.92em;
+      background-repeat: no-repeat;
+      background-size: cover;
+      transition: .2s ease;
+    }
+
+    .owl-prev {
+      &::before {
+        margin-right: 20px;
+        background-image: url("data:image/svg+xml,%3Csvg width='68' height='24' viewBox='0 0 68 24' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0.939339 10.9393C0.353554 11.5251 0.353554 12.4749 0.939339 13.0607L10.4853 22.6066C11.0711 23.1924 12.0208 23.1924 12.6066 22.6066C13.1924 22.0208 13.1924 21.0711 12.6066 20.4853L4.12132 12L12.6066 3.51472C13.1924 2.92894 13.1924 1.97919 12.6066 1.3934C12.0208 0.807616 11.0711 0.807616 10.4853 1.3934L0.939339 10.9393ZM68 10.5L2 10.5L2 13.5L68 13.5L68 10.5Z' fill='white'/%3E%3C/svg%3E%0A");
+      }
+
+      &:hover::before {
+        transform: translateX( -5px );
+      }
+    }
+
+    .owl-next {
+      &::after {
+        margin-left: 20px;
+        background-image: url("data:image/svg+xml,%3Csvg width='68' height='24' viewBox='0 0 68 24' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M67.0607 13.0607C67.6464 12.4749 67.6464 11.5251 67.0607 10.9394L57.5147 1.39341C56.9289 0.807621 55.9792 0.807621 55.3934 1.39341C54.8076 1.97919 54.8076 2.92894 55.3934 3.51473L63.8787 12L55.3934 20.4853C54.8076 21.0711 54.8076 22.0208 55.3934 22.6066C55.9792 23.1924 56.9289 23.1924 57.5147 22.6066L67.0607 13.0607ZM-2.62268e-07 13.5L66 13.5L66 10.5L2.62268e-07 10.5L-2.62268e-07 13.5Z' fill='white'/%3E%3C/svg%3E%0A");
+      }
+
+      &:hover::after {
+        transform: translateX( 5px );
+      }
+    }
+  }
+
+  @media( min-width: 768px ) {
+    .owl-nav {
+      bottom: 75px;
+
+      .owl-prev,
+      .owl-next {
+        font-size: 24px;
+      }
+    }
+  }
+
+  @media( min-width: 1200px ) {
+    .owl-nav {
+      bottom: 100px;
+    }
+  }
+}

@@ -1,0 +1,63 @@
+<app-movie-slider></app-movie-slider>
+<section class="section position-relative index-1">
+  <div class="container">
+    <h1 class="offset-negative">Explore movies & series</h1>
+    <form class="form" [formGroup]="form">
+      <div class="form-group">
+        <input class="form-control" (keyup.enter)="searchMovie(title)" (focusout)="liveResults = []" name="title" formControlName="title" placeholder="Search ...">
+        <button class="form-btn" [disabled]="!title" (click)="searchMovie(title)">
+          <svg class="form-btn-icon" width="20" height="22" viewBox="0 0 20 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M15.2126 8.15267C15.2126 12.1084 12.0257 15.3053 8.10632 15.3053C4.18698 15.3053 1 12.1084 1 8.15267C1 4.19698 4.18698 1 8.10632 1C12.0257 1 15.2126 4.19698 15.2126 8.15267Z" stroke="currentColor" stroke-width="2"/>
+            <rect width="1.9119" height="9.56879" transform="matrix(0.763086 -0.646297 0.641999 0.766705 12.3979 14.6635)" fill="currentColor"/>
+          </svg>
+        </button>
+        <div *ngIf="liveResults.length" class="live-search-results">
+          <div class="live-search-results-list">
+            <div class="live-search-results-list-item" *ngFor="let movie of liveResults">
+              <a class="movie-mini" [routerLink]="['movie-page', movie.imdbID ]">
+                <img class="movie-mini-poster" src="{{ movie.Poster }}">
+                <div class="movie-mini-title">{{ movie.Title }}</div>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </form>
+    <div class="search-results">
+      <div *ngIf="error">{{ errorMessage }}</div>
+      <div class="search-results-list">
+        <div class="search-results-list-item" *ngFor="let movie of movies">
+          <a class="movie" [routerLink]="['movie-page', movie.imdbID ]">
+            <img class="movie-poster" src="{{ movie.Poster }}">
+            <div class="movie-body">
+              <h3 class="movie-title">{{ movie.Title }}</h3>
+              <div class="movie-details">
+                <div class="movie-year">{{ movie.Year }}</div>
+                <div class="movie-type">{{ movie.Type }}</div>
+              </div>
+            </div>
+          </a>
+        </div>
+      </div>
+      <div class="pagination" *ngIf="showNav">
+        <div class="pagination-items">Items per page: {{ itemsPerPage }}</div>
+        <div class="pagination-button" *ngIf="showNavButtonPrev">
+          <button class="pagination-button-prev" (click)="prev()">
+            <svg width="68" height="24" viewBox="0 0 68 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M0.939339 10.9393C0.353554 11.5251 0.353554 12.4749 0.939339 13.0607L10.4853 22.6066C11.0711 23.1924 12.0208 23.1924 12.6066 22.6066C13.1924 22.0208 13.1924 21.0711 12.6066 20.4853L4.12132 12L12.6066 3.51472C13.1924 2.92894 13.1924 1.97919 12.6066 1.3934C12.0208 0.807616 11.0711 0.807616 10.4853 1.3934L0.939339 10.9393ZM68 10.5L2 10.5L2 13.5L68 13.5L68 10.5Z" fill="currentColor"/>
+            </svg>
+          </button>
+          <div>{{ pageRange }}</div>
+        </div>
+        <div class="pagination-button" *ngIf="showNavButtonNext">
+          <div>{{ totalResults }}</div>
+          <button class="pagination-button-next" (click)="next()">
+            <svg width="68" height="24" viewBox="0 0 68 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M67.0607 13.0607C67.6464 12.4749 67.6464 11.5251 67.0607 10.9394L57.5147 1.39341C56.9289 0.807621 55.9792 0.807621 55.3934 1.39341C54.8076 1.97919 54.8076 2.92894 55.3934 3.51473L63.8787 12L55.3934 20.4853C54.8076 21.0711 54.8076 22.0208 55.3934 22.6066C55.9792 23.1924 56.9289 23.1924 57.5147 22.6066L67.0607 13.0607ZM-2.62268e-07 13.5L66 13.5L66 10.5L2.62268e-07 10.5L-2.62268e-07 13.5Z" fill="currentColor"/>
+            </svg>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
